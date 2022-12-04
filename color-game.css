@@ -56,7 +56,9 @@ html,body{
     color: white;
 }
 .tryAgain{
-    padding: 5px 15px;
+    padding: 5px 0px;
+    width: 100px;
+    text-align: center;
 }
 .level p{
     padding: 5px 8px;
