@@ -11,6 +11,8 @@ html,body{
     height: 185px;
     background-color: #2C8E99;
     color: white;
+    display: flex;
+    justify-content: center;
 }
 .title{
     min-width: 33%;
@@ -22,7 +24,7 @@ html,body{
     margin-top: 10px;
     font-size: 35px;
 }
-.rbg{
+.rgb{
     font-size: 70px;
 }
 .second-title{
@@ -32,12 +34,16 @@ html,body{
 .setup{
     background-color: white;
     color: #639AA3;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
 }
 .setup2{
     min-width: 33%;
     display: flex;
-    justify-content: center;
-    flex-basis: 33%;
+    justify-content: space-between;
+    gap: 20px;
 }
 .level{
     display: flex;
@@ -45,15 +51,24 @@ html,body{
 .newColor{
     padding: 5px 15px;
 }
+.newColor:hover{
+    background-color: #2C8E99;
+    color: white;
+}
 .tryAgain{
     padding: 5px 15px;
 }
 .level p{
     padding: 5px 8px;
 }
-p.hard{
-    color: white;
+
+p.hard:hover{
     background-color: #2C8E99;
+    color: white;
+}
+p.easy:hover{
+    background-color: #2C8E99;
+    color: white;
 }
 .color{
     width: 100%;
@@ -62,24 +77,29 @@ p.hard{
 }
 
 .colorList{
+    margin-top: 30px;
     display: flex;
     gap: 20px;
     flex-direction: column;
-    min-width: 33%;
-    justify-content: center;
+    align-items: center;
+    width: 100%;
 }
 
-.row1{
+.row{
     display: flex;
     flex-direction: row;
     gap: 20px;
-    flex-basis: 33%;
+    justify-content: center;
     width: 100%;
 }
 
 .box{
-    background-color: orange;
-    border-radius: 10px;
-    max-width: 33%;
-    height: 5px;
+    border-radius: 20%;
+    width: 180px;
+    height: 180px;
+}
+
+.addcolor{
+    background-color: #2C8E99;
+    color: white;
 }
