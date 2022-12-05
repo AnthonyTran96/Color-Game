@@ -18,6 +18,13 @@ window.onload=function(){
         }
         return `rgb(${rgb[0]}, ${rgb[1]}, ${rgb[2]})`
     }
+    let resetRgb=function(){
+        result=createColor();
+        rgb.textContent=result;
+        newColor.textContent='new color';
+        tryAgain.textContent='';
+        RBGColor.style.backgroundColor='#2C8E99';
+    }
     let makeRowColor=function(row){
         row.forEach(function(box,index,row){
             let boxColor=createColor();
@@ -33,44 +40,36 @@ window.onload=function(){
             box.style.backgroundColor=boxColor;
         });
     }
-    let resetRgb=function(){
-        result=createColor();
-        rgb.textContent=result;
-        newColor.textContent='new color';
-        tryAgain.textContent='';
-        RBGColor.style.backgroundColor='#2C8E99';
-    }
-    let rowBox1=Array.from(row1.querySelectorAll('.box'));
-    let rowBox2=Array.from(row2.querySelectorAll('.box'));
     let addResult=function(rowBox){
+        console.log(rowBox.length);
         let resultNumber=Math.floor(Math.random()*rowBox.length);
         rowBox[resultNumber].style.backgroundColor=result;
     }
+    let rowBox1=Array.from(row1.querySelectorAll('.box'));
+    let rowBox2=Array.from(row2.querySelectorAll('.box'));
+    let rowBox;
     let addEasyLevel=function(){
         resetRgb();
-        makeRowColor(rowBox1);
-        addResult(rowBox1);
+        rowBox=[...rowBox1];
+        makeRowColor(rowBox);
+        addResult(rowBox);
         row2.remove();
         easy.classList.add(addColor);
         hard.classList.remove(addColor);
-        return rowBox1;
     }
     let addHardLevel=function(){
         resetRgb();
         row1.parentNode.appendChild(row2);
-        let rowBox=[...rowBox1,...rowBox2];
+        rowBox=[...rowBox1,...rowBox2];
         makeRowColor(rowBox);
         addResult(rowBox);
         hard.classList.add(addColor);
         easy.classList.remove(addColor);
-        return rowBox;
     }
     let addNewColor=function(){
         resetRgb();
-        let rowBox=[...rowBox1,...rowBox2];
         makeRowColor(rowBox);
         addResult(rowBox);
-        return rowBox;
     }
     let makeBlackBox=function(box){
         box.style.backgroundColor='rgb(0,0,0)';
@@ -92,9 +91,9 @@ window.onload=function(){
     easy.addEventListener('click',addEasyLevel);
     hard.addEventListener('click',addHardLevel);
     newColor.addEventListener('click',addNewColor);
-    let rowBox=addHardLevel();
-    rowBox.forEach(function(box,index,rowBox){
-        box.addEventListener('click',play);
+    addHardLevel();
+    rowBox.forEach(function(box){
+    box.addEventListener('click',play);
     })
 
 }
